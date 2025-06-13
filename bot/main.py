@@ -19,6 +19,7 @@ async def main():
     await bot.set_my_commands(
         [
         BotCommand(command="start", description="start"),
+        BotCommand(command="send", description="send document")
         ]
     )
     dp.include_router(router)

@@ -14,3 +14,7 @@ router = Router()
 @router.message(Command("start"))
 async def start_handler(msg: Message, state: FSMContext):
     bot_api.register_user()
+
+@router.message(Command("send"))
+async def send_handler(msg: Message, state: FSMContext):
+    bot_api.send_document()
