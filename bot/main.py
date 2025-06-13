@@ -9,6 +9,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import BotCommand
 from handlers import router
 
+
 from dotenv import load_dotenv
 
 load_dotenv()

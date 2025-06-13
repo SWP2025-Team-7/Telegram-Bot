@@ -1,5 +1,5 @@
 import logging
+import requests as re
 
 def register_user():
-    logging.warning("Rgister user is not completed")
-    
+    re.post("http://127.0.0.1:8000/users/register")
