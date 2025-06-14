@@ -1,5 +1,4 @@
 import os
-import io
 import logging 
 import asyncio
 
@@ -34,8 +33,8 @@ async def get_file(msg: Message, state: FSMContext):
             logging.info(f"Received the document from {msg.from_user.id}")
             file_id = msg.document.file_id
             file = await msg.bot.get_file(file_id)
-            file_in_bytes = (await msg.bot.download_file(file.file_path)).getvalue()
-            bot_api.send_document(user_id=msg.from_user.id, file=file_in_bytes)
+            file_in_bytes = (await msg.bot.download_file(file.file_path)).read()
+            bot_api.send_document(user_id=msg.from_user.id, file_in_bytes=file_in_bytes)
         case _:
             logging.info(f"Received the message instead of document from {msg.from_user.id}")
             
