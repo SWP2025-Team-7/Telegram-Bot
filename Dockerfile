@@ -1,10 +1,13 @@
 FROM python:3.10-slim
 
-WORKDIR /app/bot
+COPY requirements.txt .
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install -r requirements.txt
 
-COPY . . 
+WORKDIR /bot
+COPY . /bot
 
-CMD ["bin/bash", "-c", "python main.py"]
+RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /bot
+USER appuser
+
+CMD ["python", "bot/main.py"]
